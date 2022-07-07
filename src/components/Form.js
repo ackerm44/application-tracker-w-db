@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react'
+import { useGlobalContext } from '../context'
 
-const Form = ({ onAdd, onEdit, editID }) => {
+
+const Form = () => {
+    const {closeModal, createJob, updateJob, jobInView} = useGlobalContext()
     const [title, setTitle] = useState("")
     const [company, setCompany] = useState("")
     const [dateOrigination, setDateOrigination] = useState("")
@@ -15,11 +18,12 @@ const Form = ({ onAdd, onEdit, editID }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        if (editID) {
-            let id = editID
-            onEdit({id, title, company, dateOrigination, dateApplied, source, link, status, notes })
-        } else {
-            onAdd({ title, company, dateOrigination, dateApplied, source, link, status, notes })
+        if (jobInView) {
+            let id = jobInView.id
+            updateJob({id, title, company, dateOrigination, dateApplied, source, link, status, notes })
+        } 
+        else {
+            createJob({ title, company, dateOrigination, dateApplied, source, link, status, notes })
         }
         
         setTitle("")
@@ -29,6 +33,7 @@ const Form = ({ onAdd, onEdit, editID }) => {
         setSource(sources[0].title)
         setLink("")
         setStatus(statuses[0].title)
+        closeModal()
     }
 
     const fetchSources = async () => {
@@ -45,18 +50,18 @@ const Form = ({ onAdd, onEdit, editID }) => {
         setStatus(data[0].title)
     }
 
-    const fetchJob = async (editID) => {
-        const res = await fetch(`http://localhost:5000/jobs/${editID}`)
-        const data = await res.json()
+    // const fetchJob = async (editID) => {
+    //     const res = await fetch(`http://localhost:5000/jobs/${editID}`)
+    //     const data = await res.json()
 
-        setTitle(data.title)
-        setCompany(data.company)
-        setDateOrigination(data.dateOrigination)
-        setDateApplied(data.dateApplied)
-        setSource(data.source)
-        setLink(data.link)
-        setStatus(data.status)
-    }
+    //     setTitle(data.title)
+    //     setCompany(data.company)
+    //     setDateOrigination(data.dateOrigination)
+    //     setDateApplied(data.dateApplied)
+    //     setSource(data.source)
+    //     setLink(data.link)
+    //     setStatus(data.status)
+    // }
 
     useEffect(() => {
         fetchSources()
@@ -65,10 +70,17 @@ const Form = ({ onAdd, onEdit, editID }) => {
     }, [])
 
     useEffect(() => {
-        if (editID) {
-            fetchJob(editID)
+        if (jobInView) {
+                setTitle(jobInView.title)
+                setCompany(jobInView.company)
+                setDateOrigination(jobInView.dateOrigination)
+                setDateApplied(jobInView.dateApplied)
+                setSource(jobInView.source)
+                setLink(jobInView.link)
+                setStatus(jobInView.status)
+                setNotes(jobInView.notes)
         }
-    }, [editID])
+    }, [jobInView])
 
 
     return (
@@ -93,8 +105,8 @@ const Form = ({ onAdd, onEdit, editID }) => {
                 <div className="form-control">
                     <label htmlFor="source">Source</label>
                     <select name="source" value={source.title} onChange={e => setSource(e.target.value)}>
-                        {sources.map((source) =>
-                            <option key={source.id} value={source.title}>{source.title}</option>
+                        {sources.map((s) =>
+                            <option key={s.id} value={s.title} >{s.title}</option>
                         )}
                     </select>
                 </div>

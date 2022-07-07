@@ -17,7 +17,7 @@ const Jobs = ({ jobs, setEditID }) => {
                     {
                         jobs.map((job) => {
                             return (
-                                <Job key={job.id} {...job} setEditID={setEditID} />
+                                <Job key={job.id} job={job} setEditID={setEditID} />
                             )
                         })
 

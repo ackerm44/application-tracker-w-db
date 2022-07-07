@@ -1,21 +1,23 @@
+// import {useState} from 'react'
+import { useGlobalContext } from '../context'
 
-const Job = ({ id, title, company, dateApplied, dateOrigination, status, source, link, setEditID }) => {
-    const handleEdit = () => {
-        setEditID(id)
-    }
+
+const Job = ({ job, setEditID }) => {
+    const {openModal, fetchJob } = useGlobalContext()
+
 
     const handleViewMore = () => {
-
+        openModal()
+        fetchJob(job.id)
     }
 
     return (
         <tr>
             <td>
-                <button onClick={handleEdit}>Update</button>
-                <button onClick={handleViewMore}>View More</button>
+                <button className="btn btn-sm" onClick={handleViewMore}>View More</button>
             </td>
-            <td>{status}</td>
-            <td>{company}</td>
+            <td>{job.status}</td>
+            <td>{job.company}</td>
 
         </tr>
     )
