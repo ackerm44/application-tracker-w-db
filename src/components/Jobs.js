@@ -1,16 +1,15 @@
 import Job from "./Job"
 
-const Jobs = ({ jobs }) => {
+const Jobs = ({ jobs, setEditID }) => {
     return (
         <section className="list">
             <table className="table-grid">
                 <thead>
                     <tr>
-                        <th>Date</th>
-                        <th>Title</th>
+                        <th></th>
+                        <th>Status</th>
                         <th>Company</th>
-                        <th>Source</th>
-                        <th>Link</th>
+
                     </tr>
 
                 </thead>
@@ -18,7 +17,7 @@ const Jobs = ({ jobs }) => {
                     {
                         jobs.map((job) => {
                             return (
-                                <Job key={job.id} {...job} />
+                                <Job key={job.id} {...job} setEditID={setEditID} />
                             )
                         })
 

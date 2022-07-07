@@ -1,15 +1,24 @@
 
-const Job = ({title, company, date, source, link}) => {
-  return (
-    <tr>
-        <td>{date}</td>
-        <td>{title}</td>
-        <td>{company}</td>
-        <td>{source}</td>
-        <td><a href={link} target="_blank" rel="noreferrer">{`${link.slice(0,50)}...`}</a></td>
+const Job = ({ id, title, company, dateApplied, dateOrigination, status, source, link, setEditID }) => {
+    const handleEdit = () => {
+        setEditID(id)
+    }
 
-    </tr>
-  )
+    const handleViewMore = () => {
+
+    }
+
+    return (
+        <tr>
+            <td>
+                <button onClick={handleEdit}>Update</button>
+                <button onClick={handleViewMore}>View More</button>
+            </td>
+            <td>{status}</td>
+            <td>{company}</td>
+
+        </tr>
+    )
 }
 
 export default Job
