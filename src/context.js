@@ -4,6 +4,7 @@ const AppContext = React.createContext();
 
 const AppProvider = ({ children }) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
+    // const [isEditing, setIsEditing] = useState(false)
     const [allJobs, setAllJobs] = useState([])
     const [jobInView, setJobInView] = useState({
         "title": '',
@@ -39,7 +40,7 @@ const AppProvider = ({ children }) => {
         })
 
         const data = await res.json()
-
+        console.log(data)
         setAllJobs([...allJobs, data])
     }
 
@@ -54,7 +55,7 @@ const AppProvider = ({ children }) => {
 
         const data = await res.json()
 
-        setAllJobs([...allJobs, data])
+        fetchJobs()
     }
 
 

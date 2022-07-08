@@ -87,6 +87,12 @@ p {
 .center {
   text-align: center;
 }
+.m-2 {
+  margin: 2em;
+}
+.d-flex {
+  display: flex;
+}
 
 /* section */
 .section {
@@ -103,8 +109,14 @@ p {
 .btn {
   padding: 0.5em 1em;
   background: #56b696;
-  border: 1px solid #c5c5c5;
-  font-size: 1.25em;
+  border: 1px solid #56b696;
+  border-radius: 4px;
+  box-shadow: rgba(0, 0, 0, .1) 0 2px 4px 0;
+  font-size: 1em;
+}
+.btn:hover {
+  border: 1px solid white;
+  transform: translateY(-2px);
 }
 
 .btn-sm {
@@ -112,16 +124,25 @@ p {
   font-size: 1em;
 }
 
+.btn-warning {
+    background: #f48573;
+    border: 1px solid #f48573;
+}
+
 /* Form */
 form {
   margin: 2em auto;
   display: grid;
-  grid-template-columns: repeat(auto-fill, 100px) ;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+  gap: 0.5em 0.5em;
+  grid-auto-flow: row;
   max-width: 80vw;
+  max-height: 90vw;
 }
 
 .form-control {
-  margin: 2em 0;
+  margin: .25em 0;
   display: grid;
 }
 
@@ -131,12 +152,18 @@ form {
 
 .form-control input, .form-control select, .form-control textarea {
   margin: 0 1em 0 0;
-  height: 2em;
+  border-radius: 4px;
+  border: 1px solid white;
+  height: 3em;
+  padding: 2px 8px;
 }
-.submit {
-  width: 100px;
-  height: 2em;
+.form-btn {
   margin: auto;
+}
+
+.col-12 {
+  grid-column-start: 1;
+  grid-column-end: 4;
 }
 
 
@@ -192,13 +219,14 @@ th:last-child {
 }
 
 .modal {
-  padding: 3em;
+  padding: 3em 3em 0;
   background: #afcdc3; 
   z-index: 1;
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+  box-shadow: 0 0 5px black;
   display: none;
 }
 

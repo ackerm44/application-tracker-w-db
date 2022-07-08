@@ -2,7 +2,7 @@
 import { useGlobalContext } from '../context'
 
 
-const Job = ({ job, setEditID }) => {
+const Job = ({ job }) => {
     const {openModal, fetchJob } = useGlobalContext()
 
 
@@ -14,7 +14,7 @@ const Job = ({ job, setEditID }) => {
     return (
         <tr>
             <td>
-                <button className="btn btn-sm" onClick={handleViewMore}>View More</button>
+                <button className="btn btn-sm" onClick={handleViewMore}>View</button>
             </td>
             <td>{job.status}</td>
             <td>{job.company}</td>
