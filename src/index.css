@@ -5,7 +5,9 @@ Variables
 */
 
 :root {
-
+  --theme-color-light: #ccddd7;
+  --theme-color: #56b696;
+  --theme-color-dark: #0c563d;
 }
 /*
 =============== 
@@ -84,6 +86,13 @@ p {
   }
 }
 /*  global classes */
+.main-wrapper {
+  max-width: 80vw;
+  margin: 0 auto;
+  padding: 1em;
+  border-radius: 10px;
+  background-color: var(--theme-color-light);
+}
 .center {
   text-align: center;
 }
@@ -108,8 +117,8 @@ p {
 }
 .btn {
   padding: 0.5em 1em;
-  background: #56b696;
-  border: 1px solid #56b696;
+  background: var(--theme-color);
+  border: 1px solid var(--theme-color);
   border-radius: 4px;
   box-shadow: rgba(0, 0, 0, .1) 0 2px 4px 0;
   font-size: 1em;

@@ -11,10 +11,13 @@ function App() {
 
   return (
     <div className="App">
-      <h1 className="center">You've Got This</h1>
-      <div className="center m-2"><button className="btn" onClick={openModal}>Add New</button></div>
-      <Jobs jobs={allJobs} setEditID={setEditID}/>
-      <Modal />
+      <section className="main-wrapper">
+        <h1 className="center">You've Got This</h1>
+        <div className="center m-2"><button className="btn" onClick={openModal}>Add New</button></div>
+        <Jobs jobs={allJobs} setEditID={setEditID}/>
+        <Modal />
+      </section>
+      
     </div>
   );
 }
