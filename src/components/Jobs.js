@@ -1,4 +1,5 @@
 import Job from "./Job"
+import Sort from "./Sort"
 
 const Jobs = ({ jobs, setEditID }) => {
     return (
@@ -7,11 +8,10 @@ const Jobs = ({ jobs, setEditID }) => {
                 <thead>
                     <tr>
                         <th></th>
-                        <th>Status</th>
-                        <th>Company</th>
-
+                        <th>Date Applied <Sort value="dateApplied"/></th>
+                        <th>Status <Sort value="status"/></th>
+                        <th>Company <Sort value="company"/></th>
                     </tr>
-
                 </thead>
                 <tbody>
                     {

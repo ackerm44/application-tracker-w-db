@@ -13,6 +13,7 @@ const AppProvider = ({ children }) => {
         "dateOrigination": '',
         "dateApplied": '',
         "source": '',
+        "statusHistory": [],
         "link": '',
         "notes": ''
     })
@@ -75,6 +76,7 @@ const AppProvider = ({ children }) => {
                 isModalOpen,
                 allJobs, 
                 jobInView,
+                setAllJobs,
                 fetchJob,
                 createJob,
                 updateJob,

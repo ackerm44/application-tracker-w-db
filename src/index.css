@@ -58,10 +58,6 @@ h3 {
 h4 {
   font-size: 0.875rem;
 }
-p {
-  margin-bottom: 1.25rem;
-  color: var(--clr-grey-5);
-}
 @media screen and (min-width: 800px) {
   h1 {
     font-size: 4rem;
@@ -142,8 +138,8 @@ p {
 form {
   margin: 2em auto;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 2fr 0.5fr;
   gap: 0.5em 0.5em;
   grid-auto-flow: row;
   max-width: 80vw;
@@ -160,26 +156,45 @@ form {
 }
 
 .form-control input, .form-control select, .form-control textarea {
-  margin: 0 1em 0 0;
+  /* margin: 0 1em 0 0; */
   border-radius: 4px;
   border: 1px solid white;
   height: 3em;
   padding: 2px 8px;
 }
+.form-control textarea {
+  width: 100%;
+  min-height: 100px;
+}
 .form-btn {
   margin: auto;
+}
+.remove {
+  cursor: pointer;
+}
+
+.col-6 {
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+
+.col-6-row-2 {
+  grid-column-start: 3;
+  grid-column-end: 5;
+  grid-row-start: 2;
+  grid-row-end: 4;
 }
 
 .col-12 {
   grid-column-start: 1;
-  grid-column-end: 4;
+  grid-column-end: 5;
 }
 
 
 /* List */
 
 .list {
-  max-width: 50vw;
+  max-width: 60vw;
   margin: 3em auto;
 }
 
@@ -191,9 +206,14 @@ form {
   grid-template-columns: 
     minmax(150px, 1fr)
     minmax(150px, 1fr)
-    minmax(150px, 1fr)
+    minmax(150px, 1.25fr)
+    minmax(150px, 2fr)
 
 
+}
+table, th, td {
+  border: 1px solid gray;
+  text-align: center;
 }
 
 thead,
@@ -204,23 +224,29 @@ tr {
 
 th,
 td {
-  padding: 15px;
+  padding: 10px;
   overflow: hidden;
   white-space: nowrap;
 }
 
 th {
-  top: 0;
-  text-align: left;
-  font-weight: normal;
-  font-size: 1.1rem;
-  position: relative;
   font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-th:last-child {
-  border: 0;
+.sort-icons {
+  display: inline-flex;
+  align-items: center;
+  flex-direction: column;
+  margin-left: 0.5em;
+  cursor: pointer;
 }
+
+/* th:last-child {
+  border: 0;
+} */
 
 .job {
   display: grid;
@@ -228,7 +254,7 @@ th:last-child {
 }
 
 .modal {
-  padding: 3em 3em 0;
+  padding: 1em 1em 0;
   background: #afcdc3; 
   z-index: 1;
   position: absolute;
@@ -245,8 +271,8 @@ th:last-child {
 
 .close {
   position: absolute;
-  right: 3%;
-  top: 3%;
+  right: 0%;
+  top: 0%;
   font-weight: bold;
   font-size: 1.5em;
   padding: 0.5em;

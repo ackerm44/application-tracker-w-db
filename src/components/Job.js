@@ -16,6 +16,7 @@ const Job = ({ job }) => {
             <td>
                 <button className="btn btn-sm" onClick={handleViewMore}>View</button>
             </td>
+            <td>{job.dateApplied}</td>
             <td>{job.status}</td>
             <td>{job.company}</td>
 

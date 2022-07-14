@@ -2,6 +2,7 @@ import {useState, useEffect} from 'react'
 import Form from './components/Form'
 import Jobs from './components/Jobs'
 import Modal from './components/Modal'
+import ChartDisplay from './components/ChartDisplay'
 import { useGlobalContext } from './context'
 
 
@@ -16,6 +17,7 @@ function App() {
         <div className="center m-2"><button className="btn" onClick={openModal}>Add New</button></div>
         <Jobs jobs={allJobs} setEditID={setEditID}/>
         <Modal />
+        <ChartDisplay />
       </section>
       
     </div>
