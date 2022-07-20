@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext, useCallback } from 'react';
+import React, { useState, useEffect, useContext} from 'react';
 
 const AppContext = React.createContext();
 
@@ -6,6 +6,7 @@ const AppProvider = ({ children }) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     // const [isEditing, setIsEditing] = useState(false)
     const [allJobs, setAllJobs] = useState([])
+    const [jobsInView, setJobsInView] = useState([])
     const [jobInView, setJobInView] = useState({
         "title": '',
         "company": '',
@@ -29,6 +30,7 @@ const AppProvider = ({ children }) => {
         const res = await fetch('http://localhost:5000/jobs')
         const data = await res.json()
         setAllJobs(data)
+        setJobsInView(data)
     }
 
     const createJob = async (job) => {
@@ -41,12 +43,12 @@ const AppProvider = ({ children }) => {
         })
 
         const data = await res.json()
-        console.log(data)
+        // console.log(data)
         setAllJobs([...allJobs, data])
     }
 
     const updateJob = async (job) => {
-        const res = await fetch(`http://localhost:5000/jobs/${job.id}`, {
+        await fetch(`http://localhost:5000/jobs/${job.id}`, {
             method: 'PUT',
             headers: {
                 'Content-type': 'application/json',
@@ -54,7 +56,7 @@ const AppProvider = ({ children }) => {
             body: JSON.stringify(job),
         })
 
-        const data = await res.json()
+        // const data = await res.json()
 
         fetchJobs()
     }
@@ -76,7 +78,9 @@ const AppProvider = ({ children }) => {
                 isModalOpen,
                 allJobs, 
                 jobInView,
+                jobsInView,
                 setAllJobs,
+                setJobsInView,
                 fetchJob,
                 createJob,
                 updateJob,

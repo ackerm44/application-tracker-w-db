@@ -13,27 +13,14 @@ const ChartDisplay = () => {
           data.push([prev, status, 1])
       })
     )
-    console.log(data)
+    // console.log(data)
     return data
   }
-
-  // setChartData()
-  // const sankeyData = [
-  //   ['From', 'To', 'Weight'],
-  //   ['Job Found', 'Applied', 1],
-  //   ['Job Found', 'Applied', 1],
-  //   ['Job Found', 'Applied', 1],
-  //   ['Job Found', 'Applied', 1],
-  //   ['Job Found', 'Applied', 1],
-  //   ['Job Found', 'Applied', 1],
-  //   ['Applied', 'First Interview', 1],
-  //   ['First Interview', 'Denied', 1]
-  // ]
 
   return (
     <div>
       <Chart
-          width={700}
+          width={'100%'}
           height={'350px'}
           chartType="Sankey"
           loader={<div>Loading Chart</div>}

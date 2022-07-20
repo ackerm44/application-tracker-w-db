@@ -5,18 +5,20 @@ const Sort = ({value}) => {
     const {allJobs, setAllJobs} = useGlobalContext()
 
     const handleSort = (value, dir) => {
-        let first = `a.${value}`
-        let second = `b.${value}`
-        console.log(first)
-        console.log(second)
-        if (dir == 'up') {
-            let sorted = [...allJobs].sort((a,b) => first.localeCompare(second))
+
+        // console.log(second)
+        if (dir === 'up') {
+            let sorted = [...allJobs].sort((a,b) => {
+                console.log(a[value])
+                return a[value].localeCompare(b[value])
+            })
+
             console.log(sorted)
             setAllJobs(sorted)
 
         } else {
-            let sorted = [...allJobs].sort((a,b) => second.localeCompare(first))
-            console.log(sorted)
+            let sorted = [...allJobs].sort((a,b) => b[value].localeCompare(a[value]))
+            // console.log(sorted)
             setAllJobs(sorted)
 
         }

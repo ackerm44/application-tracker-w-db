@@ -89,7 +89,7 @@ const Form = () => {
         let removal = statusHistory.filter((status, index) => index !== i)
         setStatusHistory(removal)
 
-        let id = jobInView.id
+        // let id = jobInView.id
         updateJob({...jobInView, "statusHistory": jobInView.statusHistory})
     }
 
@@ -126,7 +126,7 @@ const Form = () => {
                     <CreatableSelect
                         isClearable
                         onChange={(input) => {
-                            console.log(input)
+                            // console.log(input)
                             setStatus(input.label)
                             setStatusHistory([...statusHistory, input.label])
                         }}
