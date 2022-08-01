@@ -4,11 +4,11 @@ import { useGlobalContext } from '../context'
 
 const Job = ({ job }) => {
     const {openModal, fetchJob } = useGlobalContext()
-
+    let date = new Date(job.dateApplied)
 
     const handleViewMore = () => {
         openModal()
-        fetchJob(job.id)
+        fetchJob(job._id)
     }
 
     return (
@@ -16,7 +16,7 @@ const Job = ({ job }) => {
             <td>
                 <button className="btn btn-sm" onClick={handleViewMore}>View</button>
             </td>
-            <td>{job.dateApplied}</td>
+            <td>{date.toDateString().slice(4)}</td>
             <td>{job.status}</td>
             <td>{job.company}</td>
 

@@ -7,12 +7,15 @@ const ChartDisplay = () => {
 
   const setChartData = () => {
     let data = [['From', 'To', 'Weight']]
-    allJobs.map((job, i) => 
+    if (allJobs.length) {
+      allJobs.map((job, i) => 
       job.statusHistory.map((status, i, array) => {
           let prev = i === 0 ? "Job Found" : array[i-1]
           data.push([prev, status, 1])
       })
     )
+    }
+
     // console.log(data)
     return data
   }

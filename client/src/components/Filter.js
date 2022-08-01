@@ -3,12 +3,16 @@ import { useGlobalContext } from "../context"
 const Filter = ({ type }) => {
     const {allJobs, setJobsInView} = useGlobalContext()
     
-    let selectOptions = allJobs.reduce((prevVal, currVal) => {
-        let currType = currVal[type];
-        return (
-            [...prevVal, currType]
-        )
-    }, [])
+    let selectOptions = []
+    if (allJobs.length) {
+        selectOptions = allJobs.reduce((prevVal, currVal) => {
+            let currType = currVal[type];
+            return (
+                [...prevVal, currType]
+            )
+        }, [])
+    }
+
     selectOptions = [...new Set(selectOptions)]
 
     const handleSelect = (e) => {        

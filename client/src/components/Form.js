@@ -52,17 +52,33 @@ const Form = () => {
     }
 
     const fetchSources = async () => {
-        const res = await fetch('http://localhost:5000/sources')
+        const res = await fetch('http://localhost:5000/api/v1/sources')
         const data = await res.json()
-        setSources(data)
-        // setSource(data[0].label)
+        let formattedSources = data.sources.map((source) => {
+            return (
+                {
+                    "id": source._id,
+                    "value": source.value,
+                    "label": source.value
+                }
+            )
+        })
+        setSources(formattedSources)
     }
 
     const fetchStatuses = async () => {
-        const res = await fetch('http://localhost:5000/statuses')
+        const res = await fetch('http://localhost:5000/api/v1/statuses')
         const data = await res.json()
-        setStatuses(data)
-        // setStatus(data[0].label)
+        let formattedStatuses = data.statuses.map((status) => {
+            return (
+                {
+                    "id": status._id,
+                    "value": status.value,
+                    "label": status.value
+                }
+            )
+        })
+        setStatuses(formattedStatuses)
     }
 
     useEffect(() => {
@@ -117,7 +133,7 @@ const Form = () => {
                     <label htmlFor="source">Source</label>
                     <CreatableSelect
                         isClearable
-                        onChange={(input) => setSource(input ? input.label : '')}
+                        onChange={(input) => setSource(input ? input.value : '')}
                         options={sources}
                         />
                 </div>

@@ -15,10 +15,10 @@ const Jobs = ({ jobs, setEditID }) => {
                     </tr>
                 </thead>
                 <tbody>
-                    {
+                    {jobs.length &&
                         jobs.map((job) => {
                             return (
-                                <Job key={job.id} job={job} setEditID={setEditID} />
+                                <Job key={job._id} job={job} setEditID={setEditID} />
                             )
                         })
 

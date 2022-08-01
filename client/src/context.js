@@ -27,14 +27,14 @@ const AppProvider = ({ children }) => {
     };
 
     const fetchJobs = async () => {
-        const res = await fetch('http://localhost:5000/jobs')
+        const res = await fetch('http://localhost:5000/api/v1/jobs')
         const data = await res.json()
-        setAllJobs(data)
-        setJobsInView(data)
+        setAllJobs(data.jobs)
+        setJobsInView(data.jobs)
     }
 
     const createJob = async (job) => {
-        const res = await fetch('http://localhost:5000/jobs', {
+        const res = await fetch('http://localhost:5000/api/v1/jobs', {
             method: 'POST',
             headers: {
                 'Content-type': 'application/json',
@@ -44,11 +44,11 @@ const AppProvider = ({ children }) => {
 
         const data = await res.json()
         // console.log(data)
-        setAllJobs([...allJobs, data])
+        setAllJobs([...allJobs, job])
     }
 
     const updateJob = async (job) => {
-        await fetch(`http://localhost:5000/jobs/${job.id}`, {
+        const res = await fetch(`http://localhost:5000/api/v1/jobs/${job._id}`, {
             method: 'PUT',
             headers: {
                 'Content-type': 'application/json',
@@ -56,14 +56,14 @@ const AppProvider = ({ children }) => {
             body: JSON.stringify(job),
         })
 
-        // const data = await res.json()
-
+        const data = await res.json()
+        console.log(data)
         fetchJobs()
     }
 
 
     const fetchJob = async (id) => {
-        const res = await fetch(`http://localhost:5000/jobs/${id}`)
+        const res = await fetch(`http://localhost:5000/api/v1/jobs/id/${id}`)
         const data = await res.json()
         setJobInView(data)
     }
